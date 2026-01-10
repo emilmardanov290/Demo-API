@@ -11,38 +11,40 @@
         <link rel="stylesheet" href="style/style.css">
     </head>
     <body>
-        <header></header>
-        <main id="MainContainer"></main>
+        <div id="root"></div>
+
         <!-- SIGN IN -->
         <template id="signin">
             <div class="flex min-h-screen bg-gray-900 flex-col justify-center px-6 py-12 lg:px-8">
-                <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">
-                        Sign in to your account
-                    </h2>
-                </div>
+                <div class="bg-gray-800 px-5 sm:px-0 pb-10 rounded-lg max-w-[28em] w-full mx-auto"> 
+                    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+                        <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">
+                            Sign in to your account
+                        </h2>
+                    </div>
 
-                <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form id="signin-form" class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-100">Email address</label>
-                            <input id="email" type="email" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-white" />
-                        </div>
+                    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                        <form id="signin-form" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-100">Email address</label>
+                                <input id="email" type="email" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-white" />
+                            </div>
 
-                        <div>
-                            <label class="block text-sm font-medium text-gray-100">Password</label>
-                            <input id="password" type="password" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-white" />
-                        </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-100">Password</label>
+                                <input id="password" type="password" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-white" />
+                            </div>
 
-                        <button class="w-full rounded-md bg-indigo-500 py-1.5 text-white">
-                            Sign in
-                        </button>
-                    </form>
+                            <button class="w-full rounded-md bg-indigo-500 py-1.5 text-white">
+                                Sign in
+                            </button>
+                        </form>
 
-                    <p class="mt-10 text-center text-sm text-gray-400">
-                        Not a member?
-                        <a href="#" data-page="signup" class="font-semibold text-indigo-400">Sign up</a>
-                    </p>
+                        <p class="mt-10 text-center text-sm text-gray-400">
+                            Not a member?
+                            <a href="#" onclick="loadPage('signup')" class="font-semibold text-indigo-400">Sign up</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </template>
@@ -50,28 +52,117 @@
         <!-- SIGN UP -->
         <template id="signup">
             <div class="flex min-h-screen bg-gray-900 flex-col justify-center px-6 py-12 lg:px-8">
-                <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-white">
-                        Create an account
-                    </h2>
+                <div class="bg-gray-800 px-5 sm:px-0 pb-10 rounded-lg max-w-[28em] w-full mx-auto">
+                    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+                        <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-white">
+                            Create an account
+                        </h2>
+                    </div>
+
+                    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                        <form id="signup-form" class="space-y-6">
+                            <input id="name" placeholder="Name" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-white" />
+                            <input id="email" type="email" placeholder="Email" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-white" />
+                            <input id="password" type="password" placeholder="Password" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-white" />
+
+                            <button class="w-full rounded-md bg-indigo-500 py-1.5 text-white">
+                                Sign up
+                            </button>
+                        </form>
+
+                        <p class="mt-10 text-center text-sm text-gray-400">
+                            Already a member?
+                            <button href="#" onclick="loadPage('signin')" class="font-semibold text-indigo-400">Sign in</button>
+                        </p>
+                    </div>
                 </div>
+            </div>
+        </template>
 
-                <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form id="signup-form" class="space-y-6">
-                        <input id="name" placeholder="Name" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-white" />
-                        <input id="email" type="email" placeholder="Email" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-white" />
-                        <input id="password" type="password" placeholder="Password" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-white" />
+        <!--MENU-->
+        <template id="menu">
+            <div class="bg-gray-900 h-screen flex flex-col justify-center items-center">
+                <div class="bg-gray-800 flex gap-16 px-8 py-12 rounded-lg max-w-[25em] w-full justify-center">
+                    <div id="admin-block" class="flex flex-col items-center gap-4 cursor-pointer">
+                        <div class="w-24 h-24 rounded-full bg-white hover:bg-slate-300 flex items-center justify-center transition-transform duration-200 hover:scale-105">
+                            <img src="materials/admin.png" class="w-12 h-12">
+                        </div>
+                        <p class="text-xl font-semibold text-white">Admin</p>
+                    </div>
+                    <div id="user-block" class="flex flex-col items-center gap-4 cursor-pointer">
+                        <div class="w-24 h-24 rounded-full bg-white hover:bg-slate-300 flex items-center justify-center transition-transform duration-200 hover:scale-105">
+                            <img src="materials/user.png" class="w-11 h-12">
+                        </div>
+                        <p class="text-xl font-semibold text-white">User</p>
+                    </div>
 
-                        <button class="w-full rounded-md bg-indigo-500 py-1.5 text-white">
-                            Sign up
-                        </button>
-                    </form>
-
-                    <p class="mt-10 text-center text-sm text-gray-400">
-                        Already a member?
-                        <a href="#" data-page="signin" class="font-semibold text-indigo-400">Sign in</a>
-                    </p>
                 </div>
+            </div>
+        </template>
+
+        <!--Admin Panel-->
+        <template id="admin-panel">
+            <div class="h-screen w-full mx-auto bg-gray-800 ">
+                <div class="px-5 pt-5">
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="text-[1.1em] xsm:text-3xl font-bold text-white">Admin Panel - Users</h1>
+                        <button onclick="loadPage('menu')" class="text-white font-semibold text-[0.8em] xsm:text-[1em] bg-gray-900 !border border-gray-200 rounded-md p-1 hover:text-black hover:bg-white transition-all duration-500">Return to menu</button>
+                    </div>
+                    <hr class="!w-full mt-5 mb-10">
+                    <table class="w-full custom-table text-[0.6em] xsm:text-[1em]">
+                        <thead class="bg-gray-700 text-white">
+                            <tr>
+                                <th class="py-2 text-sm font-medium text-[0.8em] xsm:text-[1em]">ID</th>
+                                <th class="py-2 text-sm font-medium text-[0.8em] xsm:text-[1em]">Name</th>
+                                <th class="py-2 text-sm font-medium text-[0.8em] xsm:text-[1em]">Email</th>
+                                <th class="py-2 text-sm font-medium text-[0.8em] xsm:text-[1em]">Password</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTable" class="text-white"></tbody>
+                    </table>
+                </div> 
+            </div>
+            <div id="editPanel" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                <div class="bg-gray-800 text-white rounded-lg p-6 w-[90%] max-w-md shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">Update User Information</h3>
+                    <div class="flex flex-col gap-3">
+                        <label class="flex flex-col text-sm">
+                            ID:
+                            <input type="text" id="editId" disabled class="mt-1 p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-blue-500">
+                        </label>
+                        <label class="flex flex-col text-sm">
+                            Name:
+                            <input type="text" id="editName" class="mt-1 p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-blue-500">
+                        </label>
+                        <label class="flex flex-col text-sm">
+                            Email:
+                            <input type="text" id="editEmail" class="mt-1 p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-blue-500">
+                        </label>
+                        <label class="flex flex-col text-sm">
+                            Password:
+                            <input type="text" id="editPassword" class="mt-1 p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-blue-500">
+                        </label>
+                    </div>
+                    <div class="flex justify-end gap-3 mt-5">
+                        <button id="closeBtn" class="px-4 py-2 bg-gray-600 rounded hover:bg-gray-500">Close</button>
+                        <button id="saveBtn" class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-500">Save</button>
+                        <button id="deleteBtn" class="px-4 py-2 bg-red-500 rounded hover:bg-red-400">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </template> 
+
+        <!--E-commerce-->
+        <template id="shop">
+            <div class="h-full w-full mx-auto bg-gray-800 ">
+                <div class="px-5 pt-5">
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 id="welcomeUser" class="text-[1.1em] xsm:text-3xl font-bold text-white"></h1>
+                        <button onclick="loadPage('menu')" class="text-white font-semibold text-[0.8em] xsm:text-[1em] bg-gray-900 !border border-gray-200 rounded-md p-1 hover:text-black hover:bg-white transition-all duration-500">Return to menu</button>
+                    </div>
+                    <hr class="!w-full mt-5 mb-10">
+                    <div id="productContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
+                </div> 
             </div>
         </template>
         <script src="logic.js"></script>

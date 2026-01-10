@@ -5,7 +5,7 @@ module.exports = {
     extend: {
         screens: {
         '2xsm': '320px',
-        'xsm': '375px',
+        'xsm': '460px',
         //sm 640px Huge Smartphones 
         //md 768px Pads
         //lg 1024px Small Desctops
