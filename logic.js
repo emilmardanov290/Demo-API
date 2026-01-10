@@ -29,7 +29,7 @@ function loadPage(pageId) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    loadPage("shop");
+    loadPage("signin");
 });
 
 //API
